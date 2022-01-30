@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">WilsPayoneer</string>
+    <string name="enter_code">Enter Code</string>
+    <string name="search">Search</string>
+    <string name="enter_payment_code">Enter Payment Code</string>
+    <string name="payoneer_logo">Payoneer Logo</string>
+    <string name="visa">VISA</string>
+
+    <string-array name="codes">
+        <item>AMEX</item>
+        <item>DINERS</item>
+        <item>DISCOVER</item>
+        <item>IDEAL</item>
+        <item>MAESTRO</item>
+        <item>MASTERCARD</item>
+        <item>MISTERCASH</item>
+        <item>PAYFAST</item>
+        <item>PAYPAL</item>
+        <item>POSTEPAY</item>
+        <item>RATEPAY</item>
+        <item>SEPADD</item>
+        <item>SOFORTUEBERWEISUNG</item>
+        <item>UNIONPAY</item>
+        <item>VISA</item>
+        <item>VISAELECTRON</item>
+        <item>VISA_DANKORT</item>
+    </string-array>
+</resources>
