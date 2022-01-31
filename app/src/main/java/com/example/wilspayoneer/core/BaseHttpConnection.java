@@ -16,8 +16,6 @@ public class BaseHttpConnection {
     private final static String GET = "GET";
     private final static int CONNECT_TIMEOUT = 6000;
     private final static int READ_TIMEOUT = 10000;
-    private final static String BASE_URL = "https://raw.githubusercontent.com/optile/checkout-android/develop/shared-test/lists/listresult.json";
-
 
     public static URL buildUrl(String requestUrl) throws MalformedURLException {
         Uri uri = Uri.parse(requestUrl);

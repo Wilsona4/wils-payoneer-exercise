@@ -3,7 +3,7 @@ package com.example.wilspayoneer.data.model;
 import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
-public class Applicable {
+public class ApplicableItem{
 
 	@SerializedName("recurrence")
 	private String recurrence;
@@ -36,7 +36,10 @@ public class Applicable {
 	private boolean selected;
 
 	@SerializedName("inputElements")
-	private List<InputElements> inputElements;
+	private List<InputElementsItem> inputElements;
+
+	@SerializedName("contractData")
+	private ContractData contractData;
 
 	public String getRecurrence(){
 		return recurrence;
@@ -78,7 +81,11 @@ public class Applicable {
 		return selected;
 	}
 
-	public List<InputElements> getInputElements(){
+	public List<InputElementsItem> getInputElements(){
 		return inputElements;
+	}
+
+	public ContractData getContractData(){
+		return contractData;
 	}
 }

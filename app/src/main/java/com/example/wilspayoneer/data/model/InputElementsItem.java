@@ -2,7 +2,7 @@ package com.example.wilspayoneer.data.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class InputElements {
+public class InputElementsItem{
 
 	@SerializedName("name")
 	private String name;

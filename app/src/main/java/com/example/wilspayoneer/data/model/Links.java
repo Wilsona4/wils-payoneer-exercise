@@ -4,14 +4,14 @@ import com.google.gson.annotations.SerializedName;
 
 public class Links{
 
-	@SerializedName("logo")
-	private String logo;
-
 	@SerializedName("self")
 	private String self;
 
 	@SerializedName("lang")
 	private String lang;
+
+	@SerializedName("logo")
+	private String logo;
 
 	@SerializedName("operation")
 	private String operation;
@@ -19,16 +19,16 @@ public class Links{
 	@SerializedName("validation")
 	private String validation;
 
-	public String getLogo(){
-		return logo;
-	}
-
 	public String getSelf(){
 		return self;
 	}
 
 	public String getLang(){
 		return lang;
+	}
+
+	public String getLogo(){
+		return logo;
 	}
 
 	public String getOperation(){
