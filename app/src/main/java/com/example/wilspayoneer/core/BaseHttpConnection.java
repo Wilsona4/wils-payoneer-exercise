@@ -22,7 +22,7 @@ public class BaseHttpConnection {
         return new URL(uri.toString());
     }
 
-    HttpURLConnection baseGetConnection(final URL url) throws IOException {
+    protected HttpURLConnection baseGetConnection(final URL url) throws IOException {
 
         HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
 
@@ -35,13 +35,13 @@ public class BaseHttpConnection {
         return urlConnection;
     }
 
-    String readStream(HttpURLConnection urlConnection) throws IOException {
+    protected String readStream(HttpURLConnection urlConnection) throws IOException {
         InputStream inputStream = new BufferedInputStream(urlConnection.getInputStream());
-        BufferedReader bufferedReader = new BufferedReader( new InputStreamReader(inputStream));
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
 
         StringBuilder builder = new StringBuilder();
         String line;
-        while ((line = bufferedReader.readLine()) != null){
+        while ((line = bufferedReader.readLine()) != null) {
             builder.append(line);
         }
         bufferedReader.close();

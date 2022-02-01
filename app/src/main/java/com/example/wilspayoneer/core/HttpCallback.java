@@ -4,5 +4,5 @@ public interface HttpCallback<T> {
 
     void onSuccess(T success);
 
-    void onError(Throwable error);
+    void onError(BaseException error);
 }

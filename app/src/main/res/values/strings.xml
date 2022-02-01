@@ -5,6 +5,8 @@
     <string name="enter_payment_code">Enter Payment Code</string>
     <string name="payoneer_logo">Payoneer Logo</string>
     <string name="visa">VISA</string>
+    <string name="please_retry">Applicable networks not found... Please Retry</string>
+    <string name="invalid_code">Invalid Code</string>
 
     <string-array name="codes">
         <item>AMEX</item>

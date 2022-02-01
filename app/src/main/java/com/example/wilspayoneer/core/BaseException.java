@@ -1,27 +1,28 @@
 package com.example.wilspayoneer.core;
 
 public class BaseException extends Exception {
-    private String code;
+    private String message;
 
     public BaseException(String message) {
         super(message);
-        this.setCode(code);
+        this.setMessage(message);
     }
+
     public BaseException(String message, String code) {
         super(message);
-        this.setCode(code);
+        this.setMessage(message);
     }
 
     public BaseException(String message, String code, Throwable cause) {
         super(message, cause);
-        this.setCode(code);
+        this.setMessage(message);
     }
 
-    public String getCode() {
-        return code;
+    public String getMessage() {
+        return message;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

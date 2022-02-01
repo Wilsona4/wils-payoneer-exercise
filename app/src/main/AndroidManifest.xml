@@ -14,7 +14,8 @@
         android:theme="@style/Theme.App.Starting">
         <activity
             android:name=".presentation.SecondActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.WilsPayoneer"/>
         <activity
             android:name=".presentation.MainActivity"
             android:exported="true"
