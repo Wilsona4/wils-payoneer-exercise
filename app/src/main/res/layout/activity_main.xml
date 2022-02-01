@@ -6,81 +6,92 @@
     android:layout_height="match_parent"
     tools:context=".presentation.MainActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/main_layout"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"
-        android:layout_margin="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/iv_logo"
-            android:layout_width="240dp"
-            android:layout_height="80dp"
-            android:layout_marginVertical="36dp"
-            android:contentDescription="@string/payoneer_logo"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/logo" />
-
-        <TextView
-            android:id="@+id/tv_enter_payment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="48dp"
-            android:fontFamily="@font/roboto"
-            android:text="@string/enter_payment_code"
-            android:textColor="#101010"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_logo" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_enter_code"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/main_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="36dp"
-            android:layout_marginTop="16dp"
-            android:autofillHints="name"
-            app:boxStrokeColor="@color/grey"
-            app:endIconMode="clear_text"
+            android:layout_height="match_parent"
+            android:layout_margin="16dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_enter_payment">
+            app:layout_constraintTop_toTopOf="parent">
 
-            <AutoCompleteTextView
-                android:id="@+id/actv_enter_code"
+            <ImageView
+                android:id="@+id/iv_logo"
+                android:layout_width="240dp"
+                android:layout_height="80dp"
+                android:layout_marginVertical="36dp"
+                android:contentDescription="@string/payoneer_logo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/logo" />
+
+            <TextView
+                android:id="@+id/tv_enter_payment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="48dp"
+                android:fontFamily="@font/roboto"
+                android:text="@string/enter_payment_code"
+                android:textColor="#101010"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_logo" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_enter_code"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:completionThreshold="1"
-                android:fontFamily="@font/roboto"
-                android:hint="@string/enter_code"
-                android:inputType="textAutoComplete" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginHorizontal="36dp"
+                android:layout_marginTop="16dp"
+                android:autofillHints="name"
+                app:boxStrokeColor="@color/grey"
+                app:endIconMode="clear_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_enter_payment">
 
-        <Button
-            android:id="@+id/bt_search"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="36dp"
-            android:layout_marginVertical="16dp"
-            android:padding="10dp"
-            android:text="@string/search"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="@+id/til_enter_code"
-            app:layout_constraintStart_toStartOf="@+id/til_enter_code"
-            app:layout_constraintTop_toBottomOf="@+id/til_enter_code" />
+                <AutoCompleteTextView
+                    android:id="@+id/actv_enter_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:completionThreshold="1"
+                    android:fontFamily="@font/roboto"
+                    android:hint="@string/enter_code"
+                    android:inputType="textAutoComplete" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <Button
+                android:id="@+id/bt_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="36dp"
+                android:layout_marginVertical="16dp"
+                android:padding="10dp"
+                android:text="@string/search"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="@+id/til_enter_code"
+                app:layout_constraintStart_toStartOf="@+id/til_enter_code"
+                app:layout_constraintTop_toBottomOf="@+id/til_enter_code" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
     <ProgressBar
@@ -88,12 +99,33 @@
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="visible"
         android:indeterminateTint="@color/purple_500"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/iv_connection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/connection_error"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_signal_cellular_connected_no_internet_4_bar_24" />
 
+    <TextView
+        android:id="@+id/tv_connection_lost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="12dp"
+        android:fontFamily="@font/roboto"
+        android:text="@string/network_connection_lost"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/iv_connection"
+        app:layout_constraintStart_toStartOf="@+id/iv_connection"
+        app:layout_constraintTop_toBottomOf="@+id/iv_connection" />
 </androidx.constraintlayout.widget.ConstraintLayout>

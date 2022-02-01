@@ -9,11 +9,13 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.splashscreen.SplashScreen;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.wilspayoneer.R;
 import com.example.wilspayoneer.core.BaseException;
 import com.example.wilspayoneer.core.ExpressoIdlingResource;
 import com.example.wilspayoneer.core.HttpCallback;
+import com.example.wilspayoneer.core.NetworkUtil;
 import com.example.wilspayoneer.core.Utils;
 import com.example.wilspayoneer.data.model.ApplicableItem;
 import com.example.wilspayoneer.databinding.ActivityMainBinding;
@@ -43,6 +45,8 @@ public class MainActivity extends AppCompatActivity implements HttpCallback<List
         setContentView(binding.getRoot());
 
         getApplicableNetworks();
+
+        swipeRefresh();
 
         /*Set-Up Applicable network auto-complete Text View Adapter*/
         String[] codes = getResources().getStringArray(R.array.codes);
@@ -94,9 +98,32 @@ public class MainActivity extends AppCompatActivity implements HttpCallback<List
 
     /*Get Applicable Network Response*/
     private void getApplicableNetworks() {
-        ExpressoIdlingResource.getInstance().increment();
-        Utils.showView(binding.progressBar);
-        repository.getApplicableNetworks(this);
+        if (NetworkUtil.isOnline(this)) {
+            ExpressoIdlingResource.getInstance().increment();
+            Utils.hideView(binding.ivConnection);
+            Utils.hideView(binding.tvConnectionLost);
+            Utils.hideView(binding.mainLayout);
+            Utils.showView(binding.progressBar);
+            repository.getApplicableNetworks(this);
+        } else {
+            Utils.hideView(binding.progressBar);
+            Utils.showView(binding.mainLayout);
+            Utils.showView(binding.ivConnection);
+            Utils.showView(binding.tvConnectionLost);
+            Utils.showError("Check network then swipe to refresh", binding.ivConnection);
+        }
+    }
+
+    /*Swipe to refresh data*/
+    public void swipeRefresh() {
+        binding.swipeRefresh.setOnRefreshListener(
+                () -> {
+                    // This method performs the actual data-refresh operation.
+                    // The method calls setRefreshing(false) when it's finished.
+                    getApplicableNetworks();
+                    binding.swipeRefresh.setRefreshing(false);
+                }
+        );
     }
 
     /*Method to handle edit-text changes*/

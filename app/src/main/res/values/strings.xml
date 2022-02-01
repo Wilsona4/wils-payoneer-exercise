@@ -5,9 +5,11 @@
     <string name="enter_payment_code">Enter Payment Code</string>
     <string name="payoneer_logo">Payoneer Logo</string>
     <string name="visa">VISA</string>
-    <string name="please_retry">Applicable networks not found... Please Retry</string>
+    <string name="please_retry">Applicable networks not found... Please reload data</string>
     <string name="invalid_code">Invalid Code</string>
     <string name="no_input_element">No Input Elements</string>
+    <string name="network_connection_lost">Network Connection Lost</string>
+    <string name="connection_error">Connection Error</string>
 
     <string-array name="codes">
         <item>AMEX</item>

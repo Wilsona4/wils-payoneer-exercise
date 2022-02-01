@@ -52,4 +52,6 @@ dependencies {
     // Optional -- UI testing with Espresso
     implementation "androidx.test.espresso:espresso-idling-resource:3.4.0"
 
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+
 }
