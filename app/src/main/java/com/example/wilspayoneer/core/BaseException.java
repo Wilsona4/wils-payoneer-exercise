@@ -1,5 +1,8 @@
 package com.example.wilspayoneer.core;
 
+/*
+* Base class to create custom exceptions
+*/
 public class BaseException extends Exception {
     private String message;
 

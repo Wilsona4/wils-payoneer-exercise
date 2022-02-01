@@ -1,6 +1,5 @@
 package com.example.wilspayoneer.domain;
 
-import static com.example.wilspayoneer.core.ApplicableNetworkConnection.getBaseUrl;
 
 import android.os.Handler;
 import android.os.Looper;
@@ -9,6 +8,7 @@ import com.example.wilspayoneer.core.BaseException;
 import com.example.wilspayoneer.core.BaseHttpConnection;
 import com.example.wilspayoneer.core.BaseService;
 import com.example.wilspayoneer.core.HttpCallback;
+import com.example.wilspayoneer.core.Utils;
 import com.example.wilspayoneer.data.model.ApplicableItem;
 import com.example.wilspayoneer.data.model.Response;
 import com.google.gson.Gson;
@@ -24,13 +24,14 @@ public class RepositoryImpl extends BaseHttpConnection implements IRespository {
     private final Handler handler = new Handler(Looper.getMainLooper());
     private final Gson gson = new GsonBuilder().create();
 
+    /*Get list of Applicable network*/
     @Override
     public void getApplicableNetworks(HttpCallback<List<ApplicableItem>> httpCallback) {
 
         BaseService.getInstance().getExecutorService().execute(() -> {
                     HttpURLConnection httpURLConnection = null;
                     try {
-                        URL url = buildUrl(getBaseUrl());
+                        URL url = buildUrl(Utils.BASE_URL);
 
                         httpURLConnection = baseGetConnection(url);
 
@@ -66,28 +67,6 @@ public class RepositoryImpl extends BaseHttpConnection implements IRespository {
                 }
         );
 
-
-//        Future<List<ApplicableItem>> future = BaseService.getInstance().getExecutorService().submit(new Callable<List<ApplicableItem>>() {
-//            @Override
-//            public List<ApplicableItem> call() throws BaseException {
-//                return applicableNetworkConnection.getApplicableNetworkConnection();
-//            }
-//        });
-//
-//
-//        handler.post(new Runnable() {
-//            @Override
-//            public void run() {
-//                if (httpCallback != null) {
-//                    try {
-//                        httpCallback.onSuccess(future.get());
-//                    } catch (ExecutionException | InterruptedException e) {
-//                        httpCallback.onError(new BaseException(e.getMessage()));
-//                    }
-//                }
-//            }
-//        });
-
-
+        BaseService.getInstance().getExecutorService().shutdown();
     }
 }

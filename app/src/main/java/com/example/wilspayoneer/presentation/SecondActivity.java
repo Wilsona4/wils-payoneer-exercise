@@ -33,6 +33,7 @@ public class SecondActivity extends AppCompatActivity {
         initRecyclerView();
     }
 
+    /*Set-Up Recycler View*/
     private void initRecyclerView() {
         RecyclerView mRecyclerView = (RecyclerView) binding.rvInputElements;
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
@@ -43,6 +44,7 @@ public class SecondActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);
     }
 
+    /*Retrieve Input Item List*/
     private void getInputItemList() {
         String applicableItemJson = getIntent().getStringExtra(Utils.PAYMENT_CODE);
         ApplicableItem applicableItem = gson.fromJson(applicableItemJson, ApplicableItem.class);
@@ -50,6 +52,9 @@ public class SecondActivity extends AppCompatActivity {
 
         if (applicableItem.getInputElements() != null) {
             inputElementsItemList = applicableItem.getInputElements();
+            Utils.hideView(binding.tvNotice);
+        } else {
+            Utils.showView(binding.tvNotice);
         }
     }
 }

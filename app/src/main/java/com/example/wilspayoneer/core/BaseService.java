@@ -2,7 +2,9 @@ package com.example.wilspayoneer.core;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
+/*
+* Base class for handling background task
+* */
 public class BaseService {
     private final ExecutorService executorService = Executors.newCachedThreadPool();
 

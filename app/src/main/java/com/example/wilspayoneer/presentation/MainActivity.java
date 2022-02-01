@@ -4,10 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.splashscreen.SplashScreen;
@@ -19,7 +17,6 @@ import com.example.wilspayoneer.core.Utils;
 import com.example.wilspayoneer.data.model.ApplicableItem;
 import com.example.wilspayoneer.databinding.ActivityMainBinding;
 import com.example.wilspayoneer.domain.RepositoryImpl;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
 
@@ -39,12 +36,14 @@ public class MainActivity extends AppCompatActivity implements HttpCallback<List
     protected void onCreate(Bundle savedInstanceState) {
         // Handle the splash screen transition.
         SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
+
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         getApplicableNetworks();
 
+        /*Set-Up Applicable network auto-complete Text View Adapter*/
         String[] codes = getResources().getStringArray(R.array.codes);
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, com.google.android.material.R.layout.support_simple_spinner_dropdown_item, codes);
         binding.actvEnterCode.setAdapter(arrayAdapter);
@@ -56,8 +55,7 @@ public class MainActivity extends AppCompatActivity implements HttpCallback<List
                 Optional<ApplicableItem> applicableItem = findApplicableItem(binding.actvEnterCode.getText().toString());
 
                 if (applicableItem.isPresent()) {
-                    Toast.makeText(this, applicableItem.get().toString(), Toast.LENGTH_SHORT).show();
-
+                    /*Navigate to Second Activity*/
                     Intent intent = new Intent(this, SecondActivity.class);
                     intent.putExtra(Utils.PAYMENT_CODE, gson.toJson(applicableItem.get()));
                     startActivity(intent);
@@ -91,11 +89,13 @@ public class MainActivity extends AppCompatActivity implements HttpCallback<List
         Utils.showError("Error Occurred\n" + error.getMessage(), binding.getRoot());
     }
 
+    /*Get Applicable Network Response*/
     private void getApplicableNetworks() {
         Utils.showView(binding.progressBar);
         repository.getApplicableNetworks(this);
     }
 
+    /*Method to handle edit-text changes*/
     private void setEditTextWatcher(EditText editText, TextInputLayout textInputLayout) {
         editText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -116,6 +116,7 @@ public class MainActivity extends AppCompatActivity implements HttpCallback<List
         });
     }
 
+    /*Get Applicable Network Items */
     private Optional<ApplicableItem> findApplicableItem(String code) {
         return applicableItemList.stream().filter(it -> it.getCode().equalsIgnoreCase(code.trim())).findFirst();
     }

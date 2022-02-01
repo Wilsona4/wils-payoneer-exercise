@@ -7,6 +7,7 @@
     <string name="visa">VISA</string>
     <string name="please_retry">Applicable networks not found... Please Retry</string>
     <string name="invalid_code">Invalid Code</string>
+    <string name="no_input_element">No Input Elements</string>
 
     <string-array name="codes">
         <item>AMEX</item>
