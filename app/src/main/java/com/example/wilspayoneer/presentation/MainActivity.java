@@ -12,6 +12,7 @@ import androidx.core.splashscreen.SplashScreen;
 
 import com.example.wilspayoneer.R;
 import com.example.wilspayoneer.core.BaseException;
+import com.example.wilspayoneer.core.ExpressoIdlingResource;
 import com.example.wilspayoneer.core.HttpCallback;
 import com.example.wilspayoneer.core.Utils;
 import com.example.wilspayoneer.data.model.ApplicableItem;
@@ -80,6 +81,7 @@ public class MainActivity extends AppCompatActivity implements HttpCallback<List
         Utils.hideView(binding.progressBar);
         Utils.showView(binding.mainLayout);
         applicableItemList = success;
+        ExpressoIdlingResource.getInstance().decrement();
     }
 
     @Override
@@ -87,10 +89,12 @@ public class MainActivity extends AppCompatActivity implements HttpCallback<List
         Utils.hideView(binding.progressBar);
         Utils.showView(binding.mainLayout);
         Utils.showError("Error Occurred\n" + error.getMessage(), binding.getRoot());
+        ExpressoIdlingResource.getInstance().decrement();
     }
 
     /*Get Applicable Network Response*/
     private void getApplicableNetworks() {
+        ExpressoIdlingResource.getInstance().increment();
         Utils.showView(binding.progressBar);
         repository.getApplicableNetworks(this);
     }
