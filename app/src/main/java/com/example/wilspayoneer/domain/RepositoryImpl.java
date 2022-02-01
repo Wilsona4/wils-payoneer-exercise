@@ -66,7 +66,5 @@ public class RepositoryImpl extends BaseHttpConnection implements IRespository {
                     }
                 }
         );
-
-        BaseService.getInstance().getExecutorService().shutdown();
     }
 }

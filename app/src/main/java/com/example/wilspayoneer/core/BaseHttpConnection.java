@@ -18,13 +18,21 @@ public class BaseHttpConnection {
     private final static int READ_TIMEOUT = 10000;
 
     /*Build Url URLs from Strings*/
-    public static URL buildUrl(String requestUrl) throws MalformedURLException {
+    public URL buildUrl(String requestUrl) throws MalformedURLException {
+        if (requestUrl == null) {
+            throw new IllegalArgumentException("Url can't be null");
+        }
+
         Uri uri = Uri.parse(requestUrl);
         return new URL(uri.toString());
+
     }
 
     /*Base method to create HTTP GET Connection*/
     protected HttpURLConnection baseGetConnection(final URL url) throws IOException {
+        if (url == null) {
+            throw new IllegalArgumentException("Url can't be null");
+        }
 
         HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
 
@@ -39,6 +47,10 @@ public class BaseHttpConnection {
 
     /*Create a string from connection stream*/
     protected String readStream(HttpURLConnection urlConnection) throws IOException {
+        if (urlConnection == null) {
+            throw new IllegalArgumentException("UrlConnection can't be null");
+        }
+
         InputStream inputStream = new BufferedInputStream(urlConnection.getInputStream());
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
 

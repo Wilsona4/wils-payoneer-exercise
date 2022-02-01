@@ -1,8 +1,8 @@
 package com.example.wilspayoneer.core;
 
 /*
-* Base class to create custom exceptions
-*/
+ * Base class to create custom exceptions
+ */
 public class BaseException extends Exception {
     private String message;
 
@@ -11,12 +11,7 @@ public class BaseException extends Exception {
         this.setMessage(message);
     }
 
-    public BaseException(String message, String code) {
-        super(message);
-        this.setMessage(message);
-    }
-
-    public BaseException(String message, String code, Throwable cause) {
+    public BaseException(String message, Throwable cause) {
         super(message, cause);
         this.setMessage(message);
     }

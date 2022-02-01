@@ -45,6 +45,7 @@ public class MainActivityTest {
     public void main_activity_second_activity_navigation() throws InterruptedException {
         onView(withId(R.id.til_enter_code)).check(matches(isDisplayed()));
         onView(withId(R.id.actv_enter_code)).perform(typeText(CODE), closeSoftKeyboard());
+
         onView(withId(R.id.bt_search)).perform(click());
         Thread.sleep(250);
         onView(withId(R.id.iv_logo)).check(matches(isDisplayed()));
